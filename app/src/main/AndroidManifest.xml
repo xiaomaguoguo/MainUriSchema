@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="fuck.knothing.com.mainurischema">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+
+            <!--默认启动-->
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <!--加上下面两项，则该应用在Launcher里面的图标会隐藏,表示该页面可以被隐式调用，必须加上该项-->
+                <category android:name="android.intent.category.DEFAULT"/>
+                <!--协议部分-->
+                <data android:scheme="urlscheme" android:host="auth_activity"/>
+
+            </intent-filter>
+
+            <!--隐式启动方式一-->
+            <intent-filter>
+
+                <!--必有项-->
+                <action android:name="android.intent.action.VIEW"/>
+                <!--如果希望该应用可以通过浏览器的连接启动，则添加该项-->
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!--表示该页面可以被隐式调用，必须加上该项-->
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <!--该写法跟下面三行代码一致-->
+                <data android:scheme="urischeme" android:host="project.urischeme.com" android:port="3344" android:path="/holly"/>
+
+                <!--方式二-->
+                <!--<data android:scheme="urischeme"/>-->
+                <!--<data android:pathPrefix="/holly"/>-->
+                <!--<data android:host="project.urischeme.com" android:port="3344"/>-->
+
+            </intent-filter>
+
+
+            <!--隐式启动方式二-->
+            <intent-filter>
+
+                <!--必有项-->
+                <action android:name="android.intent.action.VIEW"/>
+                <!--如果希望该应用可以通过浏览器的连接启动，则添加该项-->
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!--表示该页面可以被隐式调用，必须加上该项-->
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="secondurischeme" android:host="auth_activity"/>
+
+            </intent-filter>
+
+        </activity>
+    </application>
+
+</manifest>
